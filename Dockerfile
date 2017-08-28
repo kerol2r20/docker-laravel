@@ -4,10 +4,10 @@ MAINTAINER Yu-Hsin Lu <kerol2r20@gmail.com>
 
 RUN sed -i 's/deb.debian.org/ftp.tw.debian.org/g' /etc/apt/sources.list && \
     apt-get update && \
-    apt-get install -y git libcurl4-openssl-dev libxml2-dev zlib1g-dev libpng-dev libmcrypt-dev && \
+    apt-get install -y git libcurl4-openssl-dev libxml2-dev zlib1g-dev libpng-dev libmcrypt-dev libbz2-dev && \
     docker-php-source extract && \
     CFLAGS="-I/usr/src/php" docker-php-ext-configure xmlreader && \
-    docker-php-ext-install pdo pdo_mysql mysqli curl json xml xmlwriter xmlreader tokenizer mbstring session zip gd mcrypt && \
+    docker-php-ext-install pdo pdo_mysql mysqli curl json xml xmlwriter xmlreader tokenizer mbstring session zip gd mcrypt bz2 && \
     cd /etc/apache2/mods-enabled && \
     ln -s ../mods-available/ssl.conf && \
     ln -s ../mods-available/ssl.load && \
